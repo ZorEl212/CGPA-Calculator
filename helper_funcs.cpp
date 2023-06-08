@@ -1,4 +1,13 @@
 #include "main.h"
+#include <chrono>
+#include <thread>
+
+/**
+* calculateCGPA - calculate cgpa for a particular student
+* @student: student node for a particular student
+* 
+* Return: calculated cgpa
+*/
 
 double calculateCGPA(StudentNode* student)
 {
@@ -21,18 +30,32 @@ double calculateCGPA(StudentNode* student)
 	return totalGradePoints / totalCreditHours;
 }
 
-void printCGPA(const std::string& studentName, double cgpa)
+/**
+ * waitForEnterKey - just a dummy func to wait for enter key
+ *
+ * Return: Nothing
+ */
+
+void waitForEnterKey()
 {
-	std::cout << "CGPA for " << studentName << ": " << cgpa << std::endl;
+    std::cout << "Press Enter to continue...";
+    std::cin.get();    // Wait for a single character input (Enter key)
 }
+
+/**
+* clearTerminal - clears terminal after a certain operation
+*
+* Return: nothing
+*/
 
 void clearTerminal()
 {
+//	std::this_thread::sleep_for(std::chrono::seconds(1));
 #ifdef _WIN32
         // Use the "cls" command on Windows
         system("cls");
 #else
         // Use the "clear" command on Unix-like systems
-        system("clear");
+       system("clear");
 #endif
 }
