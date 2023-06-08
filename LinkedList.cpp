@@ -1,14 +1,25 @@
 #include "main.h"
 
-void insertNode(SubjectNode*& head, double score, int creditHours, double gradePoint, const std::string& subjectName)
+/**
+ * insertNode - insert a new node with collected information for a subject
+ * @head: head of the subject linked list
+ * @score: score for a particular subject
+ * @creditHours: credit hours for a particular subject
+ * @gradepoint: grade point calculated based on subject score
+ * @subjectName: Name of the subject
+ *
+ * Return: Nothing
+ */
+
+void insertNode(SubjectNode*& head, double score, int creditHours, const std::string& letterGrade, double gradePoint, const std::string& subjectName)
 {
-	SubjectNode* newNode = new SubjectNode(subjectName, score, creditHours, gradePoint);
+	SubjectNode* newNode = new SubjectNode(subjectName, score, creditHours, gradePoint, letterGrade);
 	if (newNode == nullptr)
 	{
-		freeSubject(newNode);
+		//cleanupSubjects(newNode);
 		return;
 	}
-	
+
 	if (head == nullptr)
 	{
 		head = newNode;
@@ -24,30 +35,38 @@ void insertNode(SubjectNode*& head, double score, int creditHours, double gradeP
 	}
 }
 
-void cleanupMemory(StudentNode* head)
+/**
+ * cleanMemory - clean the memory allocated for student Linked list.
+ * @head: head of student Linked list
+ *
+ * Return: nothing
+ */
+
+void cleanMemory(StudentNode* head)
 {
-	StudentNode* currentStudent = head;
-	while (currentStudent != nullptr)
+	while (head != nullptr)
 	{
-		SubjectNode* currentSubject = currentStudent->subjects;
-		while (currentSubject != nullptr)
-		{
-			SubjectNode* nextSubject = currentSubject->next;
-			delete currentSubject;
-			currentSubject = nextSubject;
-		}
-		StudentNode* nextStudent = currentStudent->next;
-		delete currentStudent;
-		currentStudent = nextStudent;
+		StudentNode* temp = head;
+		head = head->next;
+		cleanupSubjects(temp->subjects); // Delete subjects separately
+		delete temp;
 	}
 }
 
-void freeSubject(SubjectNode* head)
+/**
+ * cleanupSubjects - free memory allocated for Subjects linked list
+ * @head: subjects Linked list head.
+ *
+ * Return: Nothing
+ */
+
+void cleanupSubjects(SubjectNode* head)
 {
-	while (head != nullptr)
-            {
-                SubjectNode* temp = head;
-                head = head->next;
-                delete temp;
-            }
+	SubjectNode* current = head;
+	while (current != nullptr)
+	{
+		SubjectNode* next = current->next;
+		delete current;
+		current = next;
+	}
 }
