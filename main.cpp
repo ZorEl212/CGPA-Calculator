@@ -12,8 +12,8 @@ void displayMenu(StudentNode* head)
 	while (!exitMenu)
 	{
 		std::cout << "\n\n█▄█ █▀▀ ▄▀█ █▄▄   █▀▀ █▀▀ █▀█ ▄▀█\n";
-	std::cout << "░█░ ██▄ █▀█ █▄█   █▄▄ █▄█ █▀▀ █▀█\n";
-
+		std::cout << "░█░ ██▄ █▀█ █▄█   █▄▄ █▄█ █▀▀ █▀█\n";
+		
 		std::cout << "╔════════════════════════════════╗\n";
 		std::cout << "║             Menu               ║\n";
 		std::cout << "╠════════════════════════════════╣\n";

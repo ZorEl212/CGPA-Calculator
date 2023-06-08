@@ -63,7 +63,6 @@ void displaySubjects(StudentNode* student);
 void inputSubjectDetails(int& numSubjects, std::vector<std::string>& subjectNames, std::vector<int>& creditHours);
 void cleanMemory(StudentNode* head);
 double calculateCGPA(StudentNode* student);
-void printCGPA(const std::string& studentName, double cgpa);
 void cleanupSubjects(SubjectNode* head);
 void clearTerminal();
 StudentNode* findStudent(StudentNode* head, const std::string& studentName);
