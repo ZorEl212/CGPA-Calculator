@@ -1,21 +1,36 @@
 #include "main.h"
+/**
+ * displayMenu - main menu of the program
+ * @head: head of students Linked list
+ *
+ * Return: Nothing
+ */
 
 void displayMenu(StudentNode* head)
 {
 	bool exitMenu = false;
 	while (!exitMenu)
 	{
-		std::cout << "\nMenu:\n";
-		std::cout << "1. Add Student\n";
-		std::cout << "2. Add Subjects for a student\n";
-		std::cout << "3. Calculate CGPA\n";
-		std::cout << "4. Display Subjects with Grades\n";
-		std::cout << "5. Exit\n";
+		std::cout << "\n\n█▄█ █▀▀ ▄▀█ █▄▄   █▀▀ █▀▀ █▀█ ▄▀█\n";
+	std::cout << "░█░ ██▄ █▀█ █▄█   █▄▄ █▄█ █▀▀ █▀█\n";
+
+		std::cout << "╔════════════════════════════════╗\n";
+		std::cout << "║             Menu               ║\n";
+		std::cout << "╠════════════════════════════════╣\n";
+		std::cout << "║ 1. Add Student                 ║\n";
+		std::cout << "║ 2. Delete Student              ║\n";
+		std::cout << "║ 3. List all added students     ║\n";
+		std::cout << "║ 4. Add Subjects for a student  ║\n";
+		std::cout << "║ 5. Display Subjects with Grades║\n";
+		std::cout << "║ 6. Save data                   ║\n";
+		std::cout << "║ 7. Load Data                   ║\n";
+		std::cout << "║ 8. Exit                        ║\n";
+		std::cout << "╚════════════════════════════════╝\n";
 		std::cout << "Enter your choice: ";
-		
+
 		int choice;
 		std::cin >> choice;
-		
+
 		switch (choice)
 		{
 		case 1:
@@ -23,105 +38,81 @@ void displayMenu(StudentNode* head)
 			std::string student1;
 			inputStudentDetails(student1);
 			insertStudent(head, student1);
+			clearTerminal();
+    			std::cout << "Stdudent added successfuly!\n";
 			break;
 		}
-		
 		case 2:
 		{
 			std::string studentName;
-			std::cout << "Enter student name: ";
-			std::cin.ignore(); // Ignore any previous newline character
+			std::cout << "Enter the name of the student to delete: ";
+			std::cin.ignore();
 			std::getline(std::cin, studentName);
-			
-			StudentNode* currentStudent = head;
-			while (currentStudent != nullptr)
-			{
-				if (currentStudent->studentName == studentName)
-				{
-					int numSubjects;
-					std::vector<std::string> subjectNames;
-					std::vector<int> creditHours;
-					
-					inputSubjectDetails(numSubjects, subjectNames, creditHours);
-					
-					SubjectNode* head2 = nullptr;
-					inputScores(head2, subjectNames, creditHours);
-					
-					// Insert subjects into the linked list of subjects for the current student
-					SubjectNode* currentSubject = head2;
-					while (currentSubject != nullptr)
-					{
-						insertSubject(currentStudent->subjects, currentSubject->score, currentSubject->creditHours, currentSubject->gradePoint, currentSubject->subjectName);
-						currentSubject = currentSubject->next;
-					}
-					
-					// Free the memory of the temporary subject list
-					freeSubject(head2);
-					
-					break;
-				}
-				
-				currentStudent = currentStudent->next;
-			}
-			
-			if (currentStudent == nullptr)
-			{
-				std::cout << "Student not found.\n";
-			}
+			head = delStud(head, studentName);
 			break;
 		}
-		
-   		
+
 		case 3:
 		{
-			std::string studentName;
-			std::cout << "Enter student name: ";
-			std::cin.ignore(); // Ignore any previous newline character
-			std::getline(std::cin, studentName);
-			
-			StudentNode* current = head;
-			while (current != nullptr)
-			{
-				if (current->studentName == studentName)
-				{
-					double cgpa = calculateCGPA(current);
-					printCGPA(studentName, cgpa);
-					break;
-				}
-				current = current->next;
-			}
-			
-			if (current == nullptr)
-			{
-				std::cout << "Student not found.\n";
-			}
+			listAllStudents(head);
+			std::cin.ignore();
+			clearTerminal();
 			break;
 		}
+
 		case 4:
 		{
 			std::string studentName;
 			std::cout << "Enter student name: ";
 			std::cin.ignore(); // Ignore any previous newline character
 			std::getline(std::cin, studentName);
-			
-			StudentNode* current = head;
-			while (current != nullptr)
+
+			StudentNode* currentStudent = findStudent(head, studentName);
+			if (currentStudent != nullptr)
 			{
-				if (current->studentName == studentName)
-				{
-					displaySubjects(current);
-					break;
-				}
-				current = current->next;
+				addSubjectInfo(currentStudent);
 			}
-			
-			if (current == nullptr)
+			else
 			{
+				clearTerminal();
 				std::cout << "Student not found.\n";
 			}
 			break;
 		}
 		case 5:
+		{
+			std::string studentName;
+			std::cout << "Enter student name: ";
+			std::cin.ignore(); // Ignore any previous newline character
+			std::getline(std::cin, studentName);
+			StudentNode* current = findStudent(head, studentName);
+			if (current != nullptr)
+			{
+				displaySubjects(current);
+			}
+			else
+			{
+				clearTerminal();
+				std::cout << "Student not found.\n";
+			}
+			break;
+		}
+		case 6:
+		{
+			std::string filename;
+			std::cout << "Enter filename to save data: ";
+			std::cin >> filename;
+			saveDataToFile(filename, head);
+			break;
+		}
+
+
+		case 7:
+			loadData(head);
+			break;
+
+		case 8:
+			cleanMemory(head);
 			exitMenu = true;
 			break;
 		default:
@@ -133,17 +124,17 @@ void displayMenu(StudentNode* head)
 	}
 }
 
+/**
+ * main - main function where it all starts
+ * 
+ * Return: 0(success)
+ */
+
 int main(void)
 {
 	StudentNode* head = nullptr;
-	
-	
+
 	// Display menu
 	displayMenu(head);
-	
-	// Clean up memory
-	cleanupMemory(head);
-	
 	return (0);
 }
-
