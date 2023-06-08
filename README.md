@@ -2,13 +2,15 @@
 
 This repository contains a GPA Calculator program written in C++. The program allows users to input and manage student data, including their subjects, scores, credit hours, and grade points. It calculates the CGPA (Cumulative Grade Point Average) for each student and provides various functionalities to interact with the data.
 # Table of Contents
-[Getting Started](#getting-started)
-[Compilation](#compilation)
-[Usage](#usage)
-[Features](#features)
-[Contributing](#contributing)
-[Valgrind](#valgrindreport)
-  
+- [Getting Started](#getting-started)
+- [Compilation](#compilation)
+- [Usage](#usage)
+- [Features](#features)
+- [Contributing](#contributing)
+- [Valgrind Report](#valgrind-report)
+- [License](#license)
+- [Author](#author)
+
 ## <a id="getting-started"></a>Getting Started
 
 To get started with the GPA Calculator, follow these steps:
