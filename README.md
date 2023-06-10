@@ -13,7 +13,6 @@
 <li><a href="#features">Features</a></li>
 <li><a href="#contributing">Contributing</a></li>
 <li><a href="#valgrind-report">Valgrind Report</a></li>
-<li><a href="#license">License</a></li>
 <li><a href="#author">Author</a></li>
 </ul>
 <h2 id="a-idgetting-startedagetting-started"><a id="getting-started"></a>Getting Started</h2>
@@ -21,7 +20,7 @@
 <p>Clone the repository to your local machine.</p>
 <blockquote>
 <pre><code>bash 
-git clone https://github.com/your-username/gpa-calculator.git
+git clone https://github.com/ZorEl212/CGPA-Calculator.git
 </code></pre>
 </blockquote>
 <p>Change into the project directory.</p>
