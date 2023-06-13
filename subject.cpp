@@ -74,28 +74,32 @@ void displaySubjects(StudentNode* student)
 
 	clearTerminal();
 
-	std::cout << "                   █▄█ █▀▀ ▄▀█ █▄▄   █▀▀ █▀▀ █▀█ ▄▀█\n";
-	std::cout << "                   ░█░ ██▄ █▀█ █▄█   █▄▄ █▄█ █▀▀ █▀█\n";
+	
 	std::cout << "\nSubjects and Grades for " << student->studentName << ":\n";
 
 	// Table header
-    std::cout << "╔═══════════════════════════╦═════════════════════╦═════════════╗\n";
-    std::cout << "║ Subject                   ║ Marks               ║ Grade       ║\n";
-    std::cout << "╠═══════════════════════════╬═════════════════════╬═════════════╣\n";
+	std::cout << "+--------------------------+---------------------+--------------+\n";
+	std::cout << "| Subject                  | Marks               | Grade        |\n";
+	std::cout << "+--------------------------+---------------------+--------------+\n";
 
-    SubjectNode* current = student->subjects;
-    while (current != nullptr)
-    {
-	    std::cout << "║ " << std::setw(26) << std::left << current->subjectName
-		      << "║ " << std::setw(20) << std::left << current->score
-		      << "║ " << std::setw(12) << std::left << current->letterGrade << "║\n";
-	    current = current->next;
-    }
+	SubjectNode* current = student->subjects;
+	while (current != nullptr)
+	{
+		std::cout << "| " << std::setw(26) << std::left << current->subjectName
+			      << "| " << std::setw(20) << std::left << current->score
+			      << "| " << std::setw(12) << std::left << current->letterGrade << "|\n";
+		current = current->next;
+	}
 
-    // Table footer
-    std::cout << "╚═══════════════════════════╩═════════════════════╩═════════════╝\n";
-    double cgpa = calculateCGPA(student);
-    std::cout << "\nCGPA for " << student->studentName << ": " << cgpa << std::endl;
+	// Table footer
+	std::cout << "+--------------------------+---------------------+--------------+\n";
+	double cgpa = calculateCGPA(student);
+	std::cout << "\nCGPA for " << student->studentName << ": " << cgpa << std::endl;
+
+
+
+
+	
     waitForEnterKey();
     clearTerminal();
 }
