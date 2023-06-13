@@ -9,7 +9,7 @@
 * Return: calculated cgpa
 */
 
-double calculateCGPA(StudentNode* student)
+double calculateGPA(StudentNode* student)
 {
 	double totalGradePoints = 0.0;
 	int totalCreditHours = 0;

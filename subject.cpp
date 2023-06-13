@@ -92,8 +92,8 @@ void displaySubjects(StudentNode* student)
 
 	// Table footer
 	std::cout << "+--------------------------+---------------------+--------------+\n";
-	double cgpa = calculateCGPA(student);
-	std::cout << "\nCGPA for " << student->studentName << ": " << cgpa << std::endl;
+	double cgpa = calculateGPA(student);
+	std::cout << "\nGPA for " << student->studentName << ": " << cgpa << std::endl;
         waitForEnterKey();
         clearTerminal();
 }
