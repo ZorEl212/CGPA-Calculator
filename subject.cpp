@@ -74,7 +74,6 @@ void displaySubjects(StudentNode* student)
 
 	clearTerminal();
 
-	
 	std::cout << "\nSubjects and Grades for " << student->studentName << ":\n";
 
 	// Table header
@@ -95,13 +94,8 @@ void displaySubjects(StudentNode* student)
 	std::cout << "+--------------------------+---------------------+--------------+\n";
 	double cgpa = calculateCGPA(student);
 	std::cout << "\nCGPA for " << student->studentName << ": " << cgpa << std::endl;
-
-
-
-
-	
-    waitForEnterKey();
-    clearTerminal();
+        waitForEnterKey();
+        clearTerminal();
 }
 
 
