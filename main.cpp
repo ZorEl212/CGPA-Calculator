@@ -11,21 +11,19 @@ void displayMenu(StudentNode* head)
 	bool exitMenu = false;
 	while (!exitMenu)
 	{
-		std::cout << "\n\n█▄█ █▀▀ ▄▀█ █▄▄   █▀▀ █▀▀ █▀█ ▄▀█\n";
-		std::cout << "░█░ ██▄ █▀█ █▄█   █▄▄ █▄█ █▀▀ █▀█\n";
-		
-		std::cout << "╔════════════════════════════════╗\n";
-		std::cout << "║             Menu               ║\n";
-		std::cout << "╠════════════════════════════════╣\n";
-		std::cout << "║ 1. Add Student                 ║\n";
-		std::cout << "║ 2. Delete Student              ║\n";
-		std::cout << "║ 3. List all added students     ║\n";
-		std::cout << "║ 4. Add Subjects for a student  ║\n";
-		std::cout << "║ 5. Display Subjects with Grades║\n";
-		std::cout << "║ 6. Save data                   ║\n";
-		std::cout << "║ 7. Load Data                   ║\n";
-		std::cout << "║ 8. Exit                        ║\n";
-		std::cout << "╚════════════════════════════════╝\n";
+		std::cout << "+--------------------------------+\n";
+                std::cout << "|             Menu               |\n";
+                std::cout << "+--------------------------------+\n";
+                std::cout << "| 1. Add Student                 |\n";
+                std::cout << "| 2. Delete Student              |\n";
+                std::cout << "| 3. List all added students     |\n";
+                std::cout << "| 4. Add Subjects for a student  |\n";
+                std::cout << "| 5. Display Subjects with Grades|\n";
+                std::cout << "| 6. Save data                   |\n";
+                std::cout << "| 7. Load Data                   |\n";
+                std::cout << "| 8. Exit                        |\n";
+                std::cout << "+--------------------------------+\n";
+
 		std::cout << "Enter your choice: ";
 
 		int choice;
